@@ -102,8 +102,12 @@
             });
 
             channel.bind('NewMessage', (data) => {
-                this.messages.push(data.message);
-                this.scrollToBottom();
+                if (data.message.user_id !== this.app.user.id)
+                {
+                    this.messages.push(data.message);
+                    this.scrollToBottom();
+                }
+
             });
 
         },
