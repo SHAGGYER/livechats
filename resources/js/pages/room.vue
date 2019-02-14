@@ -34,8 +34,6 @@
                             <div class="input-group-append">
                                 <button class="btn btn-secondary" type="submit">Send</button>
                             </div>
-
-
                         </div>
                     </form>
 
@@ -122,8 +120,17 @@
                     room_id: this.app.$route.params.id
                 };
 
+
+                let message = {
+                    body: this.message,
+                    user: this.app.user,
+                };
+
+                this.message = '';
+
+                this.messages.push(message);
                 this.app.req.post('message/send', data).then((response) => {
-                    this.message = '';
+
                 })
             },
 
