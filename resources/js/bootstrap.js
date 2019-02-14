@@ -44,15 +44,16 @@ if (token) {
  * allows your team to easily build robust real-time web applications.
  */
 
-// import Echo from 'laravel-echo'
+import Echo from 'laravel-echo'
 
-// window.Pusher = require('pusher-js');
+window.Pusher = require('pusher-js');
+Pusher.logToConsole = true;
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     encrypted: true
-// });
+window.pusher = new Pusher(PUSHER_APP_KEY, {
+    cluster: 'eu',
+    forceTLS: true,
+    encrypted: true,
+    authEndpoint: 'broadcasting/auth'
+});
 
 window.moment = require('moment');
