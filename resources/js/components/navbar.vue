@@ -38,6 +38,9 @@
             {
                 this.app.req.post('logout').then(() => {
                     this.app.user = null;
+                    this.app.$router.push({
+                        name: 'home'
+                    })
                 })
             }
         }
