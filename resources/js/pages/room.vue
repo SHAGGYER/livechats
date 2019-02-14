@@ -133,6 +133,7 @@
                 this.message = '';
 
                 this.messages.push(message);
+                this.scrollToBottom();
                 this.app.req.post('message/send', data).then((response) => {
 
                 })
