@@ -117,9 +117,9 @@
                             this.app.user = response.data;
                             this.app.$router.push({name:'home'});
                         }
-                        else if (response.data.error === 401)
+                        else if (response.data.error)
                         {
-                            this.errorPassword = 'Could not log you in.';
+                            this.errorPassword = response.data.error;
                             this.password = '';
                         }
                     });
