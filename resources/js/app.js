@@ -17,6 +17,7 @@ const router = new VueRouter({
 });
 
 
+
 Vue.component('spinner', require('vue-simple-spinner'));
 
 import App from './App.vue';

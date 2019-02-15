@@ -9,6 +9,7 @@
 </template>
 
 <script>
+    import Helper from './utils/helpers';
     import Navbar from "./components/navbar";
     export default {
         name: "App",
@@ -22,6 +23,7 @@
                     baseURL: BASE_URL
                 }),
                 initiated: false,
+                helper: Helper,
             }
         },
         mounted() {

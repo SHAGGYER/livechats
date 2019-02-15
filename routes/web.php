@@ -29,6 +29,9 @@ Route::prefix('message')->group(function() {
 Route::prefix('room')->group(function() {
     Route::get('all', 'RoomController@getRooms');
     Route::get('/{id}', 'RoomController@getRoomById');
+    Route::post('increase-active', 'RoomController@increaseActive');
+    Route::post('decrease-active', 'RoomController@decreaseActive');
+    Route::post('update-active', 'RoomController@updateActive');
 });
 
 

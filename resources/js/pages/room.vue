@@ -13,11 +13,8 @@
                 </div>
                 <div class="chat-frame">
                     <div class="chat-window">
-                        <div infinite-wrapper>
-                            <infinite-loading force-use-infinite-wrapper direction="top" @infinite="getMessages"></infinite-loading>
-                        </div>
-
                         <div class="list-group">
+                            <infinite-loading v-if="hasNewMessages" slot="append" direction="top" @infinite="getMoreMessages"></infinite-loading>
                             <div class="list-group-item" v-for="(message, index) in messages" v-bind:key="index">
                                 {{ message.user.name }}
                                 <br />
@@ -45,6 +42,7 @@
 </template>
 
 <script>
+    window._ = require('lodash');
     import InfiniteLoading from 'vue-infinite-loading';
     export default {
         name: "room",
@@ -59,12 +57,15 @@
                 message: '',
                 messages: [],
                 currentPage: 1,
+                hasNewMessages: false,
+                channel: null,
             }
         },
         beforeRouteLeave(to, from, next)
         {
             let roomId = this.app.$route.params.id;
             pusher.unsubscribe('presence-chat.'+roomId);
+            this.decreaseActive();
             next();
         },
         mounted()
@@ -78,20 +79,22 @@
 
             let roomId = this.app.$route.params.id;
 
-            var channel = pusher.subscribe('presence-chat.'+roomId);
-            channel.bind('pusher:subscription_succeeded',(members) => {
+            this.channel = pusher.subscribe('presence-chat.'+roomId);
+            this.channel.bind('pusher:subscription_succeeded',(members) => {
                 members.each((member) => {
                     this.members.push(member.info);
 
                 });
+
+                this.updateActive();
             });
 
-            channel.bind('pusher:member_added', (member) => {
+            this.channel.bind('pusher:member_added', (member) => {
                 // for example:
                 this.members.push(member.info);
             });
 
-            channel.bind('pusher:member_removed',(member) => {
+            this.channel.bind('pusher:member_removed',(member) => {
                 for (let i = 0; i < this.members.length; i++)
                 {
                     if (member.info.id === this.members[i].id)
@@ -101,17 +104,36 @@
                 }
             });
 
-            channel.bind('NewMessage', (data) => {
+            this.channel.bind('NewMessage', (data) => {
                 if (data.message.user_id !== this.app.user.id)
                 {
                     this.messages.push(data.message);
                     this.scrollToBottom();
                 }
-
             });
 
+            this.getMessages();
         },
         methods: {
+            updateActive()
+            {
+                let data = {
+                    room_id: this.app.$route.params.id,
+                    active: this.channel.members.count
+                };
+
+                this.app.req.post('room/update-active', data);
+            },
+
+            decreaseActive()
+            {
+                let data = {
+                    room_id: this.app.$route.params.id
+                };
+
+                this.app.req.post('room/decrease-active', data);
+            },
+
             sendMessage()
             {
                 if (!this.message)
@@ -139,30 +161,39 @@
                 })
             },
 
-            getMessages($state)
+            getMessages()
             {
                 this.app.req.get('message/'+this.app.$route.params.id+'?page='+this.currentPage).then((response) => {
-                    if (response.data.data.length)
-                    {
+                    this.messages.unshift(...response.data.data.reverse());
+                    this.currentPage++;
+                    this.scrollToBottom();
+
+                    setTimeout(() => {
+                        this.hasNewMessages = true;
+                    }, 300);
+
+                });
+            },
+
+            getMoreMessages($state)
+            {
+                this.app.req.get('message/'+this.app.$route.params.id+'?page='+this.currentPage).then((response) => {
+                    if (response.data.data.length) {
                         this.messages.unshift(...response.data.data.reverse());
                         this.currentPage++;
                         $state.loaded();
-                        this.scrollToBottom();
-                    }
-                    else
-                    {
+                    } else {
                         $state.complete();
                     }
-                })
+                });
+
             },
 
             scrollToBottom()
             {
                 let $chatWindow = $('.chat-window');
 
-                $chatWindow.stop().animate({
-                    scrollTop: $chatWindow[0].scrollHeight
-                }, 800);
+                $chatWindow.animate({scrollTop: $chatWindow[0].scrollHeight}, 200);
 
             }
         }

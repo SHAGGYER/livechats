@@ -15,7 +15,7 @@
                                     </div>
 
                                     <div class="card-body">
-                                        20 <strong>Active</strong>
+                                        {{ room.active }} <strong>Active</strong>
                                     </div>
 
                                     <div class="card-footer" v-if="app.user">

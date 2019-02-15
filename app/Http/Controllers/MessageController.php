@@ -28,7 +28,7 @@ class MessageController extends Controller
 
     public function getMessages($roomId)
     {
-        $messages = Message::with('user')->where('room_id', $roomId)->latest()->paginate(20);
+        $messages = Message::with('user')->where('room_id', $roomId)->latest()->paginate(15);
 
         return response()->json($messages, 200);
     }

@@ -24,4 +24,22 @@ class RoomController extends Controller
 
         return response()->json($room, 200);
     }
+
+    public function decreaseActive(Request $request)
+    {
+        $room = Room::find($request->room_id);
+
+        if ($room->active > 0)
+        {
+            $room->active--;
+            $room->save();
+        }
+    }
+
+    public function updateActive(Request $request)
+    {
+        $room = Room::find($request->room_id);
+        $room->active = $request->active;
+        $room->save();
+    }
 }
