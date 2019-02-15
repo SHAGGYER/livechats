@@ -8,7 +8,7 @@
                     <spinner v-if="loading"></spinner>
                     <div v-else>
                         <div class="row">
-                            <div class="col-sm-3" v-for="(room, index) in rooms" v-bind:key="index">
+                            <div class="col-sm-3" v-for="(room, index) in rooms" v-bind:key="index" style="margin-bottom: 15px">
                                 <div class="card" style="text-align: center">
                                     <div class="card-header">
                                         {{ room.title }}
