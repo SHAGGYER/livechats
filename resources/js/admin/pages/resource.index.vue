@@ -161,7 +161,7 @@
                             column: field.column,
                             type: field.type,
                             model: resource[field.column],
-                            bcrypt: field.bcrypt ? true : false
+                            bcrypt: field.bcrypt
                         })
                     }
                 }
