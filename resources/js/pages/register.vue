@@ -110,10 +110,16 @@
                     this.errorName = null;
                 }
 
+                let testUsername = new RegExp(/^[a-zA-Z0-9]+$/);
 
                 if (!this.username && this.username.length < 4)
                 {
                     this.errorUsername = 'Username has to be at least 4 characters long.';
+                    this.errors.push(this.errorUsername);
+                }
+                else if (!testUsername.test(this.username))
+                {
+                    this.errorUsername = 'Only characters [a-z][A-Z][0-9] are allowed.';
                     this.errors.push(this.errorUsername);
                 }
                 else
