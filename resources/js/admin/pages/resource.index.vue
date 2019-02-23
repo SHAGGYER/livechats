@@ -52,6 +52,8 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <pagination :on-click-page="clickPage" :total-pages="lastPage" :app="app" :page="currentPage"></pagination>
                 </div>
             </div>
         </div>
@@ -84,7 +86,9 @@
                 resource: null,
                 loading: false,
                 currentResource: this.app.findResource(),
-                searchQuery: ''
+                searchQuery: '',
+                currentPage: 1,
+                lastPage: 0
             }
         },
         mounted()
@@ -135,6 +139,19 @@
 
                 this.app.req.post('admin/resource', data).then((response) => {
                     this.resources = response.data.data;
+                    this.lastPage = response.data.last_page;
+                })
+            },
+
+            clickPage(page)
+            {
+                let data = {
+                    resource: this.currentResource,
+                    model: this.currentResource.model
+                };
+
+                this.app.req.post('admin/resource?page='+page, data).then((response) => {
+                    this.resources = response.data.data;
                 })
             },
 
@@ -173,31 +190,6 @@
                     backdrop: 'static',
                     keyboard: false,
                 })
-            },
-
-            openViewResourceModal(resource)
-            {
-                let fields = [];
-
-                for (let i = 0; i < this.currentResource.fields.length; i++)
-                {
-                    let field = this.currentResource.fields[i];
-
-                    fields.push({
-                        name: field.name,
-                        column: field.column,
-                        type: field.type,
-                        model: resource[field.column],
-                    })
-                }
-
-                this.fields = fields;
-
-                $('#resource-show-modal').modal({
-                    backdrop: 'static',
-                    keyboard: false,
-                })
-
             },
 
             openDeleteResourceDialog(resource)

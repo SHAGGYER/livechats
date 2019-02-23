@@ -16,6 +16,8 @@ const router = new VueRouter({
     routes
 });
 
+import Pagination from './plugins/pagination';
+Vue.use(Pagination);
 
 Vue.component('spinner', require('vue-simple-spinner'));
 
