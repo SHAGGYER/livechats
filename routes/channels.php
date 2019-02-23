@@ -16,5 +16,5 @@ Broadcast::channel('user.{id}', function () {
 });
 
 Broadcast::channel('chat.{roomId}', function ($user, $roomId) {
-    return ['id' => $user->id, 'name' => $user->name];
+    return ['id' => $user->id, 'username' => $user->username];
 });

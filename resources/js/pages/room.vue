@@ -2,12 +2,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                <h1 v-if="room" style="text-align: center; color: white;">{{ room.title }}</h1>
+
                 <div class="members-frame">
                     <div class="list-group">
                         <div class="list-group-item"
                              v-bind:key="index"
                              v-for="(member, index) in members">
-                            {{ member.name }}
+                            {{ member.username }}
                         </div>
                     </div>
                 </div>
@@ -16,7 +18,7 @@
                         <div class="list-group">
                             <infinite-loading v-if="hasNewMessages" slot="append" direction="top" @infinite="getMoreMessages"></infinite-loading>
                             <div class="list-group-item" v-for="(message, index) in messages" v-bind:key="index">
-                                {{ message.user.name }}
+                                {{ message.user.username }}
                                 <br />
                                 {{ message.body }}
                             </div>
@@ -59,6 +61,7 @@
                 currentPage: 1,
                 hasNewMessages: false,
                 channel: null,
+                room: null,
             }
         },
         beforeRouteLeave(to, from, next)
@@ -90,7 +93,6 @@
             });
 
             this.channel.bind('pusher:member_added', (member) => {
-                // for example:
                 this.members.push(member.info);
             });
 
@@ -112,6 +114,7 @@
                 }
             });
 
+            this.getRoom();
             this.getMessages();
         },
         methods: {
@@ -195,6 +198,14 @@
 
                 $chatWindow.animate({scrollTop: $chatWindow[0].scrollHeight}, 200);
 
+            },
+
+            getRoom()
+            {
+                let roomId = this.app.$route.params.id;
+                this.app.req.get('room/'+roomId).then((response) => {
+                    this.room = response.data;
+                })
             }
         }
     }
