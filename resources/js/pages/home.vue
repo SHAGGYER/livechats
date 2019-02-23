@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="home-container">
-                    <h1>Rooms</h1>
+                    <h1 style="text-align: center">Rooms</h1>
 
                     <spinner v-if="loading"></spinner>
                     <div v-else>

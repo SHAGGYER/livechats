@@ -17,10 +17,10 @@
                     <div class="chat-window">
                         <div class="list-group">
                             <infinite-loading v-if="hasNewMessages" slot="append" direction="top" @infinite="getMoreMessages"></infinite-loading>
-                            <div class="list-group-item" v-for="(message, index) in messages" v-bind:key="index">
-                                {{ message.user.username }}
-                                <br />
-                                {{ message.body }}
+                            <div class="list-group-item message" v-for="(message, index) in messages" v-bind:key="index">
+                                <div class="message-date">{{ message.created_at | friendlyDate }}</div>
+                                <div class="message-username">{{ message.user.username }}</div>
+                                <div class="message-body">{{ message.body }}</div>
                             </div>
                         </div>
                     </div>
@@ -62,6 +62,11 @@
                 hasNewMessages: false,
                 channel: null,
                 room: null,
+            }
+        },
+        filters: {
+            friendlyDate(value){
+                return moment(value).format('DD-MM-YYYY HH:mm');
             }
         },
         beforeRouteLeave(to, from, next)
@@ -236,5 +241,22 @@
         height: 660px;
         overflow-y: auto;
         background-color: white;
+    }
+
+    .message {
+        position: relative;
+    }
+
+    .message-date {
+        font-size: 12px;
+        color: darkgrey;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+
+    .message-username {
+        font-weight: bold;
+
     }
 </style>
