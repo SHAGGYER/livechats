@@ -83,6 +83,38 @@ export default [
         ]
     },
 
+    {
+        title: 'Feedback',
+        plural: 'Feedback',
+        model: 'App\\Feedback',
+        route: 'feedback',
+        type: 'router-link-resource',
+        fields: [
+            {
+                name: 'ID',
+                column: 'id',
+                auto: true,
+            },
 
+            {
+                name: 'Body',
+                column: 'body',
+                type: 'text',
+                auto: false
+            },
+
+            {
+                name: 'Created At',
+                column: 'created_at',
+                auto: true,
+            },
+
+            {
+                name: 'Updated At',
+                column: 'updated_at',
+                auto: true,
+            }
+        ]
+    },
 
 ];

@@ -34,6 +34,10 @@ Route::prefix('room')->group(function() {
     Route::post('update-active', 'RoomController@updateActive');
 });
 
+Route::prefix('feedback')->group(function (){
+    Route::post('create', 'FeedbackController@create');
+});
+
 
 Route::prefix('admin')->group(function (){
     Route::get('init', 'AdminController@init');

@@ -1,5 +1,6 @@
 import Home from './pages/home';
 import Room from './pages/room';
+import Feedback from './pages/feedback';
 import Login from './pages/login';
 import Register from './pages/register';
 
@@ -15,6 +16,12 @@ const routes = [
         path: '/room/:id',
         component: Room,
         name: 'room'
+    },
+
+    {
+        path: '/feedback',
+        component: Feedback,
+        name: 'feedback',
     },
 
     {
