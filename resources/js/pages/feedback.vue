@@ -45,6 +45,14 @@
                 submitted: false,
             }
         },
+        mounted() {
+            if (!this.app.user)
+            {
+                this.$router.push({
+                    name: 'home'
+                });
+            }
+        },
         methods: {
             onSubmit()
             {

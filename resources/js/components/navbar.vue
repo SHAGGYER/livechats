@@ -13,7 +13,7 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
+                    <li class="nav-item" v-if="app.user">
                         <router-link :to="{ name: 'feedback' }" class="nav-link">Feedback</router-link>
                     </li>
                     <li class="nav-item dropdown">
