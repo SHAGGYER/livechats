@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef792f1e-f694-4f15-9550-77575e69cf16" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app.dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vhost.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web.dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env.prod" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,11 +201,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="C:\xampp\htdocs\livechats\resources\js\admin\components" />
       <recent name="C:\xampp\htdocs\livechats\resources\js\admin" />
       <recent name="C:\xampp\htdocs\livechats\resources\js\utils" />
       <recent name="C:\xampp\htdocs\livechats\resources\js" />
-      <recent name="C:\xampp\htdocs\livechats\config" />
     </key>
   </component>
   <component name="RunManager">
@@ -255,7 +250,7 @@
       <workItem from="1551021817005" duration="12000" />
       <workItem from="1551263199700" duration="41000" />
       <workItem from="1552046730934" duration="1069000" />
-      <workItem from="1581958907409" duration="1854000" />
+      <workItem from="1581958907409" duration="1979000" />
     </task>
     <servers />
   </component>
@@ -263,9 +258,9 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="393" y="177" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581959263035">
+    <state x="393" y="177" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581962085324">
       <screen x="0" y="23" width="1280" height="708" />
     </state>
-    <state x="393" y="177" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1280.708@0.23.1280.708" timestamp="1581959263035" />
+    <state x="393" y="177" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1280.708@0.23.1280.708" timestamp="1581962085324" />
   </component>
 </project>
