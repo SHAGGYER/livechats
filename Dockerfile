@@ -1,7 +1,17 @@
-FROM php:7.4-fpm-alpine
+# PHP Version environment variable
+ARG PHP_VERSION
+
+# PHP Version alpine image to install based on the PHP_VERSION environment variable
+FROM php:$PHP_VERSION-fpm-alpine
+
+# Application environment variable
+ARG APP_ENV
+
+# Remote working directory environment variable
+ARG REMOTE_WORKING_DIR
 
 # Install Additional dependencies
-RUN apk update && apk add \
+RUN apk update && apk add --no-cache $PHPIZE_DEPS \
    build-base shadow nano curl gcc git bash \
    php7 \
    php7-fpm \
@@ -24,6 +34,12 @@ RUN apk update && apk add \
 # Install extensions
 RUN docker-php-ext-install pdo pdo_mysql
 RUN docker-php-ext-enable pdo_mysql
+
+# install xdebug and enable it if the development environment is local
+RUN if [ $APP_ENV = "local" ]; then \
+   pecl install xdebug; \
+   docker-php-ext-enable xdebug; \
+fi;
 
 # Install PHP Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
