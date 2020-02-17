@@ -11,6 +11,9 @@ services:
       - 80
     environment:
       VIRTUAL_HOST: livechats.mikolaj.dk
+      VIRTUAL_PORT: 8000
+      LETSENCRYPT_HOST: livechats.mikolaj.dk
+      LETSENCRYPT_EMAIL: mikoo1991@yahoo.com
   db:
     image: mariadb
     environment:
