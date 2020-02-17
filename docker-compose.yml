@@ -9,5 +9,11 @@ services:
     expose:
       - 80
     environment:
-      VIRTUAL_HOST: livechats.mikolaj.dk
+      VIRTUAL_HOST: mychat.mikolaj.dk
       VIRTUAL_PORT: 8000
+      LETSENCRYPT_HOST: mychat.mikolaj.dk
+      LETSENCRYPT_EMAIL: mikoo1991@yahoo.com
+networks:
+  default:
+    external:
+      name: nginx-proxy
