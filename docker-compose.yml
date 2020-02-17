@@ -23,11 +23,8 @@ services:
     container_name: webserver
     restart: unless-stopped
     tty: true
-    expose:
-      - 80
-    environment:
-      VIRTUAL_HOST: chat.mikolaj.dk
-      VIRTUAL_PORT: 9000
+    ports:
+      - "9000:9000"
     volumes:
       - ./:/var/www
       - ./nginx/conf.d/:/etc/nginx/conf.d/
