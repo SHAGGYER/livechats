@@ -18,10 +18,10 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "5432:5432"
-    image: postgres
+      - "3306:3306"
+    image: mysql
     environment:
-      POSTGRES_PASSWORD: Spillet2018
+      MYSQL_ROOT_PASSWORD: Spillet2018
     volumes:
       - dbdata:/var/lib/mysql/
       - ./mysql/my.cnf:/etc/mysql/my.cnf
