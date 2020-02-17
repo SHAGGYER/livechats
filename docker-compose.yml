@@ -4,13 +4,11 @@ services:
     image: php:alpine
     volumes:
       - "./:/app"
-    working_dir: /app
-    command: "php artisan serve --host=0.0.0.0 --port=8000"
+    command: "php artisan serve --host=0.0.0.0 --port=80"
     expose:
       - 80
     environment:
       VIRTUAL_HOST: mychat.mikolaj.dk
-      VIRTUAL_PORT: 8000
       LETSENCRYPT_HOST: mychat.mikolaj.dk
       LETSENCRYPT_EMAIL: mikoo1991@yahoo.com
 networks:
