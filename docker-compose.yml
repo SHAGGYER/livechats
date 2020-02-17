@@ -23,8 +23,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=Spillet2018
       - MYSQL_DATABASE=livechats
-      - MYSQL_USER=miko1991
-      - MYSQL_PASSWORD=Spillet2018
     volumes:
       - dbdata:/var/lib/mysql/
 volumes:
