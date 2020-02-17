@@ -13,3 +13,7 @@ services:
       VIRTUAL_PORT: 8000
       LETSENCRYPT_HOST: chat.mikolaj.dk
       LETSENCRYPT_EMAIL: mikoo1991@yahoo.com
+networks:
+  default:
+    external:
+      name: nginx-proxy
