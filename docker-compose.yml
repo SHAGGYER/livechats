@@ -13,6 +13,23 @@ services:
       VIRTUAL_PORT: 8000
       LETSENCRYPT_HOST: chat.mikolaj.dk
       LETSENCRYPT_EMAIL: mikoo1991@yahoo.com
+  db:
+    image: mysql:5.7.22
+    container_name: livechats_db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: livechats
+      MYSQL_ROOT_PASSWORD: Spillet2018
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql/
+volumes:
+  dbdata:
+    driver: local
 networks:
   default:
     external:
