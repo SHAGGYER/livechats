@@ -25,6 +25,7 @@ services:
       - MYSQL_DATABASE=livechats
     volumes:
       - dbdata:/var/lib/mysql/
+      - ./my.cnf:/etc/mysql/my.cnf
 volumes:
   dbdata:
     driver: local
