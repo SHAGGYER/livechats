@@ -28,7 +28,7 @@ services:
     expose:
       - 80
     environment:
-      VIRTUAL_HOST: livechats.mikolaj.dk
+      VIRTUAL_HOST: chat.mikolaj.dk
       VIRTUAL_PORT: 9000
     volumes:
       - ./:/var/www
