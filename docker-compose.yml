@@ -18,13 +18,10 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "3306:3306"
-    image: mariadb:latest
+      - "5432:5432"
+    image: postgres
     environment:
-      MYSQL_ROOT_PASSWORD: Spillet2018
-      MYSQL_DATABASE: livechats
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
+      POSTGRES_PASSWORD: Spillet2018
     volumes:
       - dbdata:/var/lib/mysql/
       - ./mysql/my.cnf:/etc/mysql/my.cnf
