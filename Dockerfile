@@ -2,7 +2,7 @@
 ARG PHP_VERSION
 
 # PHP Version alpine image to install based on the PHP_VERSION environment variable
-FROM php:$PHP_VERSION-fpm-alpine
+FROM php:7.4-fpm-alpine
 
 # Application environment variable
 ARG APP_ENV
