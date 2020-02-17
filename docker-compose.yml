@@ -21,7 +21,7 @@ services:
       - "3306:3306"
     image: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: Spillet2018
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
       - dbdata:/var/lib/mysql/
       - ./mysql/my.cnf:/etc/mysql/my.cnf
