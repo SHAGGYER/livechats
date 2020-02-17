@@ -8,8 +8,6 @@ WORKDIR /var/www
 
 RUN apt-get update && apt-get -y install git && apt-get -y install zip
 
-RUN composer install
-
 COPY . /var/www
 
 RUN chown -R www-data:www-data \
