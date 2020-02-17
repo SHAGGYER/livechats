@@ -21,10 +21,10 @@ services:
       - "3306:3306"
     image: mysql:5.7.22
     environment:
-      - MYSQL_ROOT_PASSWORD: Spillet2018
-      - MYSQL_DATABASE: livechats
-      - SERVICE_TAGS: dev
-      - SERVICE_NAME: mysql
+      MYSQL_ROOT_PASSWORD: Spillet2018
+      MYSQL_DATABASE: livechats
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
     volumes:
       - dbdata:/var/lib/mysql/
 volumes:
