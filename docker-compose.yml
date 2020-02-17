@@ -14,17 +14,17 @@ services:
       LETSENCRYPT_HOST: chat.mikolaj.dk
       LETSENCRYPT_EMAIL: mikoo1991@yahoo.com
   db:
-    image: mysql:5.7.22
     container_name: livechats_db
     restart: unless-stopped
     tty: true
     ports:
       - "3306:3306"
+    image: mysql
     environment:
-      MYSQL_DATABASE: livechats
-      MYSQL_ROOT_PASSWORD: Spillet2018
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
+      - MYSQL_ROOT_PASSWORD=Spillet2018
+      - MYSQL_DATABASE=livechats
+      - MYSQL_USER=miko1991
+      - MYSQL_PASSWORD=Spillet2018
     volumes:
       - dbdata:/var/lib/mysql/
 volumes:
