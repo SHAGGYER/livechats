@@ -1,63 +1,24 @@
-version: '3'
+# docker-compose.yml #
+version: "3"
 services:
-
-  #PHP Service
   app:
-    build: ./
-    image: digitalocean.com/php
-    container_name: livechats
-    restart: unless-stopped
-    tty: true
-    environment:
-      SERVICE_NAME: app
-      SERVICE_TAGS: dev
-    working_dir: /var/www
+    image: php:alpine
     volumes:
-      - ./:/var/www
-      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
-    networks:
-      - app-network
-
-  #Nginx Service
-  webserver:
-    image: nginx:alpine
-    container_name: webserver_livechats
-    restart: unless-stopped
-    tty: true
+      - "./:/app"
+    working_dir: /app
+    command: "php artisan serve --host=0.0.0.0 --port=8000"
     expose:
       - 80
     environment:
       VIRTUAL_HOST: livechats.mikolaj.dk
-    volumes:
-      - ./:/var/www
-      - ./nginx/conf.d/:/etc/nginx/conf.d/
-    networks:
-      - app-network
-
-  #MySQL Service
   db:
-    image: mysql:5.7.22
-    container_name: db_livechats
-    restart: unless-stopped
-    tty: true
-    ports:
-      - "3306:3306"
+    image: mariadb
     environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
       MYSQL_DATABASE: livechats
-      MYSQL_ROOT_PASSWORD: testtest
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
+    ports:
+      - 3306:3306
     volumes:
-      - dbdata:/var/lib/mysql/
-      - ./mysql/my.cnf:/etc/mysql/my.cnf
-    networks:
-      - app-network
-
-#Docker Networks
-networks:
-  app-network:
-    driver: bridge
-#Volumes
+      - "db-data:/var/lib/mysql/data"
 volumes:
-  dbdata:
-    driver: local
+  db-data: {}
