@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ef792f1e-f694-4f15-9550-77575e69cf16" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/my.cnf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,6 +204,9 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2018.3.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mysql" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="C:\xampp\htdocs\livechats\resources\js\admin\components" />
@@ -254,7 +258,7 @@
       <workItem from="1551263199700" duration="41000" />
       <workItem from="1552046730934" duration="1069000" />
       <workItem from="1581958907409" duration="6887000" />
-      <workItem from="1581972492242" duration="2316000" />
+      <workItem from="1581972492242" duration="2420000" />
     </task>
     <servers />
   </component>
