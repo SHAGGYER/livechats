@@ -6,12 +6,14 @@ services:
     build: ./
     container_name: livechats_app
     restart: unless-stopped
+    ports:
+      - "80:8000"
     expose:
       - 80
     environment:
-      VIRTUAL_HOST: chat.mikolaj.dk
+      VIRTUAL_HOST: livechats.mikolaj.dk
       VIRTUAL_PORT: 8000
-      LETSENCRYPT_HOST: chat.mikolaj.dk
+      LETSENCRYPT_HOST: livechats.mikolaj.dk
       LETSENCRYPT_EMAIL: mikoo1991@yahoo.com
   db:
     container_name: livechats_db
