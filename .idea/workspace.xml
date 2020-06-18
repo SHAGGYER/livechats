@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ef792f1e-f694-4f15-9550-77575e69cf16" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,7 +255,9 @@
       <workItem from="1581972492242" duration="9652000" />
       <workItem from="1582551120911" duration="171000" />
       <workItem from="1592484572104" duration="1727000" />
-      <workItem from="1592496074545" duration="599000" />
+      <workItem from="1592496074545" duration="1236000" />
+      <workItem from="1592506615664" duration="326000" />
+      <workItem from="1592507007215" duration="31000" />
     </task>
     <servers />
   </component>
@@ -269,10 +272,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="535" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1592484894619" />
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592485195575">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592499017399">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1592485195575" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1592499017399" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1592506940621">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1592506940621" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1592485148850">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
