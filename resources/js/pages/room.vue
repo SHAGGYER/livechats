@@ -80,6 +80,7 @@
         {
             if (!this.app.user)
             {
+            {
                 this.app.$router.push({
                     name: 'login'
                 });
